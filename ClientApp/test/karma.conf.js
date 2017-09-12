@@ -24,7 +24,7 @@ module.exports = function (config) {
       json: './coverage/coverage.json',
       html: './coverage/html'
     },
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
+    reporters: ['progress', 'trx', 'mocha', 'coverage', 'remap-coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_WARN,
@@ -34,6 +34,8 @@ module.exports = function (config) {
       'application/javascript': ['ts', 'tsx']
     },
     singleRun: true,
+    // *.trx file output for Visual Studio
+    trxReporter: { outputFile: 'test-results.trx', shortTestName: false },
     webpack: require('./webpack.config.test.js')({
       env: 'test'
     }),
